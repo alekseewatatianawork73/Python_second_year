@@ -356,11 +356,11 @@ film2 = Movie('Little Women', 'Greta Gerwig', 2019)
 ```
 Вызов методов:
 ```
-mus.decades()
+decades(mus)
 => 1990-е годы
-film.decades()
+decades(film)
 => 1990-е годы
-film2.decades()
+decades(film2)
 => 2010-е годы
 ```
 
