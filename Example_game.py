@@ -13,8 +13,8 @@ pygame.display.set_caption('My Game')
 
 size = (90, 90)
 
-fon = pygame.image.load('images/fon.jpg')
-der = pygame.image.load('images/der.jpg')
+fon = pygame.image.load('images/fon.png')
+der = pygame.image.load('images/der.png')
 fons = pygame.transform.scale(fon, (1200, 630))
 ders = pygame.transform.scale(der, size)
 
@@ -30,8 +30,8 @@ f_end = pygame.font.SysFont('Arial',35, True, True)
 
 
 
-f_image = ['images/f1.png', 'images/f2.jpg', 'images/f3.png', 'images/f4.png', 'images/f5.jpg',
-           'images/f6.jpg','images/f7.png', 'images/f8.jpg', 'images/f9.jpg']
+f_image = ['images/f1.png', 'images/f2.png', 'images/f3.png', 'images/f4.png', 'images/f5.png',
+           'images/f6.png','images/f7.png', 'images/f8.png', 'images/f9.png']
 
 f = []
 for link in f_image:
