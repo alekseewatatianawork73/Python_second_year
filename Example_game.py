@@ -13,7 +13,7 @@ pygame.display.set_caption('My Game')
 
 size = (90, 90)
 
-fon = pygame.image.load('images/fon.png')
+fon = pygame.image.load('images/fon1.png')
 der = pygame.image.load('images/der.png')
 fons = pygame.transform.scale(fon, (1200, 630))
 ders = pygame.transform.scale(der, size)
