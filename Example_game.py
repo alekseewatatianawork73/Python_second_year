@@ -42,7 +42,8 @@ for link in f_image:
 
 pygame.time.set_timer(pygame.USEREVENT, 1000)
 
-z = [(300, 200), (402, 200), (504, 200), (606, 200), (708, 200), (810, 200), (300, 300), (402, 300), (504, 300), (606, 300), (708, 300), (810, 300), (300, 400), (402, 400), (504, 400), (606, 400), (708, 400), (810, 400)]
+z = [(300, 200), (402, 200), (504, 200), (606, 200), (708, 200), (810, 200), (300, 300), (402, 300), (504, 300),
+     (606, 300), (708, 300), (810, 300), (300, 400), (402, 400), (504, 400), (606, 400), (708, 400), (810, 400)]
 random.shuffle(z)
 
 
@@ -58,15 +59,14 @@ close = False
 pl1=0
 pl2=0
 q=0
-foto = 0
-po = 0
 d = {}
 for i in range(9):
-    d[f[foto]] = set()
-    d[f[foto]].add(z[po])
-    d[f[foto]].add(z[po + 1])
-    foto += 1
-    po += 2
+    d[f[i]] = set()
+    d[f[i]].add(z[2 * i])
+    d[f[i]].add(z[2 * i + 1])
+
+cur = 0
+flag = 1
 while run:
 
     while close:
@@ -97,36 +97,7 @@ while run:
 
     screen.blit(fons, (0, 0))
 
-    if draw.count(False) == 2:
-        z_true = set()
-        k = []
-        for i in range(len(draw)):
-            if not draw[i]:
-                k.append(i)
-                z_true.add(rct[i])
-        flag = 1
-        if q%2==0:
-            for foto, z_set in d.items():
-                if z_set == z_true:
-                    schet += 1
-                    draw[k[0]] = 5
-                    draw[k[1]] = 5
-                    flag = 0
-                    pl1 += 1
-                    break
-        if q%2!=0:
-            for foto, z_set in d.items():
-                if z_set == z_true:
-                    schet += 1
-                    draw[k[0]] = 5
-                    draw[k[1]] = 5
-                    flag = 0
-                    pl2 += 1
-                    break
-        if flag:
-            q += 1
-            draw[k[0]] = True
-            draw[k[1]] = True
+
 
 
     for pos in range(300, 811, 102):
@@ -138,6 +109,12 @@ while run:
         screen.blit(f[i], z[2 * i])
         screen.blit(f[i], z[2 * i + 1])
 
+    pp = pygame.key.get_pressed()
+    if pp[pygame.K_SPACE]:
+        for x in draw:
+            if x != 5:
+                x = True
+
     p = pygame.mouse.get_pressed()
     if p[0]:
         pos = pygame.mouse.get_pos()
@@ -145,17 +122,66 @@ while run:
             rt = pygame.rect.Rect(rct[i][0], rct[i][1], 90, 90)
             if rt.collidepoint(pos) and draw[i] != 5:
                 draw[i] = False
+                cur = i
 
-    s = -1
+    s = 0
     rct = []
     for x in draw:
-        s += 1
         if x and x != 5:
             screen.blit(ders, z[s])
         r = ders.get_rect(topleft= z[s])
         rct.append(r.topleft)
+        s += 1
 
+    for event in pygame.event.get():
+        '''if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                pos = pygame.mouse.get_pos()
+                for i in range(len(rct)):
+                    rt = pygame.rect.Rect(rct[i][0], rct[i][1], 90, 90)
+                    if rt.collidepoint(pos) and draw[i] != 5:
+                        draw[i] = False
+                        cur = i'''
+        if event.type == pygame.USEREVENT:
+            sek += 1
+        if event.type == pygame.QUIT:
+            run = False
+    if schet == 9:
+        close = True
 
+    if draw.count(False) == 2:
+        z_true = set()
+        k = []
+        for i in range(len(draw)):
+            if not draw[i]:
+                k.append(i)
+                z_true.add(rct[i])
+
+        if q % 2 == 0:
+            for foto, z_set in d.items():
+                if z_set == z_true:
+                    schet += 1
+                    draw[k[0]] = 5
+                    draw[k[1]] = 5
+                    flag = 0
+                    pl1 += 1
+                    break
+        if q % 2 != 0:
+            for foto, z_set in d.items():
+                if z_set == z_true:
+                    schet += 1
+                    draw[k[0]] = 5
+                    draw[k[1]] = 5
+                    flag = 0
+                    pl2 += 1
+                    break
+
+    if draw.count(False) == 3:
+        if flag:
+            q += 1
+            draw[k[0]] = True
+            draw[k[1]] = True
+        flag = 1
 
     vr = f_end.render(f'Time:{sek}', True, BLACK)
     sch = f_end.render(f'Score:{schet}/9', True, BLACK)
@@ -172,12 +198,5 @@ while run:
 
     pygame.display.flip()
 
-    for event in pygame.event.get():
-        if event.type == pygame.USEREVENT:
-            sek += 1
-        if event.type == pygame.QUIT:
-            run = False
-    if schet == 9:
-        close = True
 
 pygame.quit()
