@@ -1,3 +1,4 @@
+
 # импортируем библиотеку
 import customtkinter as ctk
 
@@ -8,7 +9,7 @@ def press_btn():
 
 
 # задаём цветовое оформление всего приложения
-ctk.set_appearance_mode("dark")  # тема фона
+ctk.set_appearance_mode("light")  # тема фона
 ctk.set_default_color_theme("blue")  # тема виджетов
 
 # создаём основное окно
@@ -28,8 +29,13 @@ for i in range(columns):
 
 # создание текстового поля
 lbl = ctk.CTkLabel(master=root)
-lbl.configure(text='Простое приложение с кнопкой', font=ctk.CTkFont(family='Arial', size=15))
+lbl.configure(text='Простое приложение с кнопкой', font=ctk.CTkFont(family='Arial', size=25, weight='bold', slant='italic'))
 lbl.grid(row=0, column=3, padx=20, pady=20, sticky="ew")
+
+#создание поля для ввода
+entr = ctk.CTkEntry(master=root)
+entr.configure(justify="center", state="normal")
+entr.grid(row=2, column=2, columnspan=3, padx=20, pady=20, sticky="nsew")
 
 # создание кнопки в главном окне root
 btn = ctk.CTkButton(master=root)
