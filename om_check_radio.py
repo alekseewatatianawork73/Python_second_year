@@ -2,8 +2,7 @@ import customtkinter as ctk
 
 
 def event1():
-    l = ctk.CTkLabel(master=root)
-    l.configure()
+    pass
 
 
 def press1():
