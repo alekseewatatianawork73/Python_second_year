@@ -57,6 +57,7 @@ pict.grid(row=3, column=3, padx=20, pady=20)
 
 rct = pict.create_rectangle(100, 100, 150, 150, fill='red')
 root.bind('<KeyPress>', move_rct)
+#pict.coords(rct, 0, 0, 50, 50)
 
 menu = ctk.CTkOptionMenu(master=root)
 menu.configure(anchor='center', values=['Светлый', 'Тёмный'], font=ctk.CTkFont(family='Arial', size=20, weight='bold', slant='italic'), command=om)
