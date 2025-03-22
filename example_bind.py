@@ -41,6 +41,12 @@ def press2():
     om(menu.get())
 
 
+def press3():
+    global x1, x2, y1, y2
+    x1, x2, y1, y2 = int(ex1.get()), int(ex2.get()), int(ey1.get()), int(ey2.get())
+    om(menu.get())
+
+
 def om(ch):
     global rct
     pict.delete('all')
@@ -57,7 +63,7 @@ ctk.set_default_color_theme("blue")
 
 root = ctk.CTk()
 root.title("Моё приложение")
-root.geometry("1000x500")
+root.geometry("1200x700")
 
 rows, columns = 7, 7
 for i in range(rows):
@@ -86,5 +92,31 @@ btn2.grid(row=1, column=3, padx=20, pady=20, sticky="ew")
 btn1 = ctk.CTkButton(master=root)
 btn1.configure(text="Уменьшить", font=ctk.CTkFont(family='Arial', size=15, weight='bold'), command=press1)
 btn1.grid(row=2, column=3, padx=20, pady=20, sticky="ew")
+
+lbl = ctk.CTkLabel(master=root)
+lbl.configure(text='Изменить координаты:', font=ctk.CTkFont(family='Arial', size=15, weight='bold'))
+lbl.grid(row=4, column=3, padx=20, pady=20, sticky="ew")
+
+ex1 = ctk.CTkEntry(master=root, placeholder_text='x1')
+ex2 = ctk.CTkEntry(master=root, placeholder_text='x2')
+ey1 = ctk.CTkEntry(master=root, placeholder_text='y1')
+ey2 = ctk.CTkEntry(master=root, placeholder_text='y2')
+
+lbl = ctk.CTkLabel(master=root)
+lbl.configure(text='Левый верхний угол:', font=ctk.CTkFont(family='Arial', size=15, weight='bold'))
+lbl.grid(row=5, column=2, padx=20, pady=20, sticky="ew")
+
+lbl = ctk.CTkLabel(master=root)
+lbl.configure(text='Правый нижний угол:', font=ctk.CTkFont(family='Arial', size=15, weight='bold'))
+lbl.grid(row=5, column=4, padx=20, pady=20, sticky="ew")
+
+ex1.grid(row=6, column=1, padx=20, pady=20, sticky="ew")
+ey1.grid(row=6, column=2, padx=20, pady=20, sticky="ew")
+ex2.grid(row=6, column=4, padx=20, pady=20, sticky="ew")
+ey2.grid(row=6, column=5, padx=20, pady=20, sticky="ew")
+
+btn3 = ctk.CTkButton(master=root)
+btn3.configure(text="Переместить", font=ctk.CTkFont(family='Arial', size=15, weight='bold'), command=press3)
+btn3.grid(row=6, column=3, padx=20, pady=20, sticky="ew")
 
 root.mainloop()
