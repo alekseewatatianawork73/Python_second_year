@@ -66,12 +66,16 @@ def press1():
     btn.grid(row=7, column=3, padx=20, pady=20, sticky="ew")
 
 
+def press2():
+    pict.delete('all')
+
+
 ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
 
 root = ctk.CTk()
 root.title("Моё приложение")
-root.geometry("1000x500")
+root.geometry("1000x700")
 
 rows, columns = 7, 7
 for i in range(rows):
@@ -90,5 +94,9 @@ pict.grid(row=1, column=3, padx=20, pady=20)
 btn1 = ctk.CTkButton(master=root)
 btn1.configure(text="Нарисовать фигуру", font=ctk.CTkFont(family='Arial', size=15, weight='bold'), command=press1)
 btn1.grid(row=4, column=3, padx=20, pady=20, sticky="nsew")
+
+btn2 = ctk.CTkButton(master=root)
+btn2.configure(text="Очистить холст", font=ctk.CTkFont(family='Arial', size=15, weight='bold'), command=press2)
+btn2.grid(row=5, column=3, padx=20, pady=20, sticky="nsew")
 
 root.mainloop()
