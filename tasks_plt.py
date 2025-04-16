@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # задание 1
-'''
 a, b, c = map(int, input("Введите коэффициенты уравнения: ").split())
 
 x = np.linspace(-5, 5)
@@ -29,7 +28,13 @@ for x in months:
 plt.bar(months, temps, color='orange')
 plt.title('Ежемесячная температура')
 plt.show()
-'''
 
 # задание 3
-
+# food, house, clothes, relax, others
+expenses = list(map(int, input('Введите расходы на еду/жильё/одежду/развлечения/другое через пробел: ').split()))
+names = ['еда', 'жильё', 'одежда', 'развлечения', 'другое']
+plt.figure(figsize=(10, 7))
+plt.pie(expenses, labels=names, colors=['orange', 'blue', 'green', 'red', 'lightgrey'], autopct='%1.3f%%', startangle=90)
+plt.legend(loc='lower right')
+plt.title('Расходы', fontsize=20)
+plt.show()
