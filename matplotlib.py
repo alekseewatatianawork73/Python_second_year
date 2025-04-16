@@ -28,7 +28,7 @@ plt.show()
 
 plt.scatter(x, y, label='Диаграмма рассеяния', color='red')
 plt.xlim(-5, 7)
-plt.yticks()
+plt.yticks(np.arange(-5, 15, 1), fontsize=12)
 plt.legend()
 plt.show()
 
