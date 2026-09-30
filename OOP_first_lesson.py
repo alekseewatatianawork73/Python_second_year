@@ -104,6 +104,7 @@ class Car():
         self.engine_on = True  # сохранили атрибут внутри self
 
 
+    # геттер - метод для получения значения цвета
     def get_color(self):
         return self.color
 
@@ -134,7 +135,11 @@ class Account:
 
 
 acc = Account("Иван", 1000)
-
 print(acc.owner)  # => Иван
 print(acc.__balance)   # => AttributeError
 print(acc.get_balance())  # => 1000
+
+#-------------------------------------------------------------------------------------------------
+# Ссылка на задачи: https://github.com/alekseewatatianawork73/Python_second_year/blob/main/OOP_tasks.md
+
+#-------------------------------------------------------------------------------------------------
