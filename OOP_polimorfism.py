@@ -76,10 +76,8 @@ class Employee:  # класс работников
 def get_workplace(obj):
     if isinstance(obj, Employee):
         return obj.workplace
-    elif isinstance(obj, Student) or isinstance(obj, Pupil):
-        return obj.studyplace
     else:
-        return f'Объект типа {type(obj)} не имеет место работы/учёбы.'
+        return obj.studyplace
 
 
 #------------------------------------------------------------------------
